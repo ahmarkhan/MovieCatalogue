@@ -8,6 +8,7 @@ myApp.controller('rootController', function rootController($scope,$http) {
 	$scope.currentProfile  = "https://image.tmdb.org/t/p/w300_and_h450_bestv2/";
 	$scope.currentActorIndex = 0;
 	
+	// function to get the entire collection
 	$scope.getCollectionData = function(){
 		$http({
 		 	method: 'GET',
@@ -16,7 +17,7 @@ myApp.controller('rootController', function rootController($scope,$http) {
 		    // this callback will be called asynchronously
 		    // when the response is available
 		    $scope.collectionData = response;
-		    $scope.getDirectors(response.data.parts);
+		    $scope.createMovieDetails(response.data.parts);
 		    
 		 }, function errorCallback(response) {
 		 	//return response;
@@ -24,9 +25,9 @@ myApp.controller('rootController', function rootController($scope,$http) {
 	};
 	$scope.getCollectionData();
 
-	$scope.getDirectors = function(movieList){
-		console.log("movieList");
-		console.log(movieList);
+
+	// function to create Movie Details
+	$scope.createMovieDetails = function(movieList){
 		var dirName ='';
 		var stars=[];
 		var writers=[];
@@ -92,13 +93,9 @@ myApp.controller('rootController', function rootController($scope,$http) {
 						});
 						$scope.currentMovieDisp.movieDetails[0].credits[0].focussedImgCls="focussedImgCls";
 						$scope.currentMovieDisp.movieDetails[0].credits[0].focussedTextCls="focussedTextCls";
-						console.log($scope.currentMovieDisp.movieDetails);
 						$scope.currentProfile+=credits[0].profile_path;
 
 					}
-					console.log($scope.detailedCollection);
-
-
 				},
 
 				function errorCallback(response) {
@@ -112,14 +109,13 @@ myApp.controller('rootController', function rootController($scope,$http) {
 
 	};
 
-
+	// function to get a particular clicked Movie data to show in the Panel ( Current Movie Clicked with all its details)
 	$scope.getMovieData  = function(id,index){
 		$scope.currentMovieDisp = {movieDetails : []};
 		$scope.currentProfile ="https://image.tmdb.org/t/p/w300_and_h450_bestv2/";
 		var movieDetails = $scope.detailedCollection.movieDetails;
-		// Clearing all classes
 		
-
+		// Clearing all classes
 		for(var i =0;i<$scope.detailedCollection.movieDetails[index].credits.length;i++){
 			$scope.detailedCollection.movieDetails[index].credits[i].focussedImgCls="";
 			$scope.detailedCollection.movieDetails[index].credits[i].focussedTextCls="";
@@ -139,17 +135,16 @@ myApp.controller('rootController', function rootController($scope,$http) {
 						stars		  : movieDetails[i].stars		
 				});
 				$scope.currentProfile+=movieDetails[i].credits[0].profile_path;
-				console.log($scope.currentMovieDisp.movieDetails[0].credits[0]);
 				$scope.currentMovieDisp.movieDetails[0].credits[0].focussedImgCls="focussedImgCls";
 				$scope.currentMovieDisp.movieDetails[0].credits[0].focussedTextCls="focussedTextCls";
 				$scope.currentActorIndex = 0;
-				console.log('==>',$scope.currentMovieDisp);
 				break;
 			}
 		}
 
 	};
 
+	// function to update the Current Profile Pic of the Actor being clicked
 	$scope.getPersonImg = function(profile_path,par_index,index){
 		$scope.currentMovieDisp.movieDetails[par_index].credits[index].focussedImgCls="focussedImgCls";
 		$scope.currentMovieDisp.movieDetails[par_index].credits[index].focussedTextCls="focussedTextCls";

@@ -1,0 +1,5 @@
+1. It can be made more generic by creating Services.
+2. It can be made more Responsive by applying media Queries.
+3. Tools like Gulp can be used .
+4. Test Cases using Jasmine can be written for the functions I have made.
+5. Playing more with the APIs can be done, which can lead to more proper utilisation of the MovieDB API. ( However I have tried using it effectively)

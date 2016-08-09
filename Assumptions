@@ -1,0 +1,5 @@
+1. Unique Directors - Only one and not a Unit of Directors
+2. I have tried to make it look simple, as I personally felt it was not a very complex application.
+3. It doesn't aim at being Generic. By not being Generic means its more focussed on the particular Application being asked to make.
+4. However yes, it can be used for any Collection provided you know the CollectionId#.
+5. I have used the CollectionId#528 as being suggested in the problem statement. 

@@ -1,5 +1,10 @@
-1. It can be made more generic by creating Services.
+1. It can be made more generic by creating Services ( only if required ).
 2. It can be made more Responsive by applying media Queries.
 3. Tools like Gulp can be used .
 4. Test Cases using Jasmine can be written for the functions I have made.
 5. Playing more with the APIs can be done, which can lead to more proper utilisation of the MovieDB API. ( However I have tried using it effectively)
+6. Common functions can be clubbed into common.js so to make lot of functions generic.
+7. Constants file can be maintained with details like appID# or any Urls etc.
+8. When the application grows eventually, we can make use of reusable templates.
+9. Templates can be used via any  jqueryTemplatePlugin or with AngularJs also. As it is desirable to avoid using jquery and using AngularJs more and more to discover its efficacy and high applicability.
+10. Right now we are fetching all details from server, so we don't need to put any image in imgs folder. However we can incase future requirements arise.
